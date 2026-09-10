@@ -26,25 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   });
 
-  // Click-to-Copy Discord Tag while opening account link
-  const discordTag = document.getElementById('discordTag');
-  const toast = document.getElementById('toast');
+  // Automatic Image Switcher (Every 5 Seconds)
+  const images = document.querySelectorAll('.image-wrapper .zyd-img');
+  let currentIndex = 0;
 
-  if (discordTag && toast) {
-    discordTag.addEventListener('click', () => {
-      const username = '_zyide';
-      
-      navigator.clipboard.writeText(username).then(() => {
-        // Show Toast Notification
-        toast.classList.add('show');
-        
-        // Hide Toast after 2 seconds
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 2000);
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-    });
+  if (images.length > 1) {
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 5000); // 5000ms = 5 seconds
   }
 });
