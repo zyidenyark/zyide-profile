@@ -33,19 +33,19 @@ body {
   animation: bgFade 1.2s ease-out forwards;
 }
 
-/* Outer Card Container */
+/* Outer Card Container - Pinalapad ang max-width sa 680px */
 .card-container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 520px; 
+  max-width: 680px; 
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 1000px;
 }
 
-/* Gray Card Container */
+/* Gray Card Container - Dinagdagan ang padding para lumaki ang mismong card */
 .card {
   position: relative;
   overflow: hidden;
@@ -54,8 +54,8 @@ body {
   width: 100%;
   background-color: #2a2928; /* Soft Matte Gray Background */
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
-  padding: 40px 36px;
+  border-radius: 36px;
+  padding: 56px 48px;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -128,7 +128,7 @@ body {
   animation-delay: calc(var(--i, 1) * 0.12s + 0.15s);
 }
 
-/* Top Image Frame */
+/* Top Image Frame (Walang binago sa orihinal na sukat) */
 .image-wrapper {
   position: relative;
   z-index: 2;
@@ -162,20 +162,20 @@ body {
   pointer-events: auto;
 }
 
-/* Bottom Fade Overlay inside the Image - Binaba ang fade at blur papuntang name */
+/* Bottom Fade Overlay inside the Image */
 .image-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 10px 16px 14px 16px; /* Binawasan ang top padding para sa baba lang magsimula ang overlay */
+  padding: 10px 16px 14px 16px;
   background: linear-gradient(
     to top, 
     rgba(42, 41, 40, 0.95) 0%, 
     rgba(42, 41, 40, 0.6) 50%, 
     transparent 100%
   );
-  backdrop-filter: blur(1px); /* Nilinaw ang gitna/taas para hindi takpasan ang mukha */
+  backdrop-filter: blur(1px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -262,6 +262,7 @@ body {
   color: #a8a2a0;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top: 10px;
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -281,7 +282,7 @@ body {
   align-items: center;
 }
 
-/* Banner Item Styling */
+/* Base Banner Style (TikTok Accounts) */
 .server-banner {
   display: flex;
   align-items: center;
@@ -293,6 +294,8 @@ body {
   overflow: hidden;
   text-decoration: none;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .server-banner:hover {
@@ -335,13 +338,33 @@ body {
   color: #ffffff;
 }
 
+/* Malaking Discord Server Banner Lamang */
+.discord-server-banner {
+  height: 180px;
+  border-radius: 20px;
+}
+
+.discord-server-banner .server-img-wrapper {
+  width: 50%;
+}
+
+.discord-server-banner .server-text-wrapper {
+  width: 50%;
+  padding: 16px;
+  background-color: #1a1919;
+}
+
+.discord-server-banner .server-title {
+  font-size: 1.1rem;
+}
+
 /* Responsive Mobile Rules */
 @media (max-width: 480px) {
   .card {
     padding: 28px 20px;
     border-radius: 26px;
   }
-  
+
   .image-wrapper {
     width: 90%;
     border-radius: 20px;
@@ -350,8 +373,16 @@ body {
   .name {
     font-size: 2rem;
   }
-  
+
   .server-banner {
     height: 72px;
+  }
+
+  .discord-server-banner {
+    height: 140px;
+  }
+
+  .discord-server-banner .server-title {
+    font-size: 1rem;
   }
 }
